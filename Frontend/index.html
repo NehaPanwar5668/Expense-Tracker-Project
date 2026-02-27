@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>💸 Expense Tracker</h1>
+        
+        <div class="summary">
+            <h3>Total Spent: <span id="totalAmount">₹0.00</span></h3>
+        </div>
+
+       
+        <div class="form-container">
+            <input type="number" id="amount" placeholder="Amount (₹)" required>
+            <input type="text" id="description" placeholder="Description (e.g., Lunch)" required>
+            <input type="text" id="recipientName" placeholder="To (Name)" required>
+            <input type="text" id="recipientUpi" placeholder="To (UPI ID)" required>
+            <button onclick="addExpense()">Add Expense</button>
+        </div>
+
+       
+        <div class="filter-container">
+            <input type="text" id="filterUpi" placeholder="Search by UPI ID">
+            <button onclick="loadExpenses()">Search</button>
+            <button onclick="loadAllExpenses()" class="secondary">Show All</button>
+        </div>
+
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>To (Name)</th>
+                    <th>UPI ID</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTable">
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Update Expense</h2>
+            <input type="hidden" id="updateId">
+            
+            <div class="form-group">
+                <label>Amount (₹):</label>
+                <input type="number" id="updateAmount" placeholder="Amount">
+            </div>
+            
+            <div class="form-group">
+                <label>Description:</label>
+                <input type="text" id="updateDescription" placeholder="Description">
+            </div>
+            
+            <div class="form-group">
+                <label>To (Name):</label>
+                <input type="text" id="updateRecipientName" placeholder="Recipient Name">
+            </div>
+            
+            <div class="form-group">
+                <label>To (UPI ID):</label>
+                <input type="text" id="updateRecipientUpi" placeholder="UPI ID">
+            </div>
+            
+            <button onclick="updateExpense()">Save Changes</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
